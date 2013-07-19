@@ -1,0 +1,149 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+# Use Xft?
+use_xft yes
+xftfont Monaco:size=10
+xftalpha 0.8
+text_buffer_size 2048
+#no_buffers yes
+
+alignment bottom_right
+gap_x 20
+gap_y 50
+background yes
+border_width 1
+border_inner_margin 5
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+net_avg_samples 2
+out_to_console no
+out_to_stderr no
+extra_newline no
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_class Conky
+own_window_transparent no
+own_window_colour 000000
+own_window_type normal
+own_window_argb_visual yes
+own_window_argb_value 90
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Update interval in seconds
+update_interval 1.0
+
+stippled_borders 0
+uppercase no
+use_spacer yes
+show_graph_scale no
+show_graph_range no
+
+# text area size
+maximum_width 350
+minimum_size 350 700
+#max_text_width 0
+
+TEXT
+${color white}SYSTEM ${hr 2}$color
+${color white}Linux: ${alignr}${nodename} ${kernel} on ${machine}$color
+Uptime: ${alignr}${uptime}
+RAM: $memperc% ${alignr}${color 2E8B57}${membar 8,120}$color
+#SWAP: $swapperc% ${alignr}${color 3CB371}${swapbar 8,120}$color
+
+${voffset -10}${color white}DATE ${hr 2}$color
+${color white}${font Areal:size=14}${time %F} ${alignc 2}${color white}${font Areal:size=24}${time %H:%M}${font}$color
+
+${voffset -10}${color white}CPU ${hr 2}$color
+CPU Graph: ${cpugraph 00ffff ff0000}
+Core 0 Usage: ${cpu cpu1}% ${alignr}${color 4169E1}${cpubar cpu1 8,120}$color
+Core 1 Usage: ${cpu cpu2}% ${alignr}${color 4682B4}${cpubar cpu2 8,120}$color
+Core 2 Usage: ${cpu cpu1}% ${alignr}${color 4169E1}${cpubar cpu3 8,120}$color
+Core 3 Usage: ${cpu cpu2}% ${alignr}${color 4682B4}${cpubar cpu4 8,120}$color
+CPU Frequency: ${alignr}${freq cpu1}MHz
+Temp 0: ${execi 8 sensors | grep Core\ 0 | cut -c18-19}°C  1: ${execi 8 sensors | grep Core\ 1 | cut -c18-19}°C  2: ${execi 8 sensors | grep Core\ 2 | cut -c18-19}°C  3: ${execi 8 sensors | grep Core\ 3 | cut -c18-19}°C
+
+${voffset -10}${color white}HD ${hr 2}$color
+/:	${fs_used /}/${fs_size /} ${alignr}${color FF9933}${fs_bar 8,110 /}$color
+/boot:	${fs_used /boot}/${fs_size /boot} ${alignr}${color FF6600}${fs_bar 8,110 /boot}$color
+HDD:	${fs_used /mnt/local_HDD}/${fs_size /mnt/local_HDD} ${alignr}${color FFA500}${fs_bar 8,110 /mnt/local_HDD}$color
+#
+${if_existing /proc/acpi/battery/BAT0/state}
+	${voffset -6}${color white}BATTERY ${hr 2}$color
+	Status: ${battery BAT1} ${battery_time BAT1} ${alignr}${color 7FFF00}${battery_bar 8,120}$color
+${endif}
+#
+${voffset -20}${if_up wlan0}
+${color white}NETWORK wlan0 ${hr 2}$color
+${voffset 4}${font PizzaDude Bullets:size=10}O${font}   Up: ${upspeed wlan0}kb/s ${alignr}${upspeedgraph wlan0 8,120 FFFFFF 00FF00}
+${voffset 4}${font PizzaDude Bullets:size=10}U${font}   Down: ${downspeed wlan0}kb/s ${alignr}${downspeedgraph wlan0 8,120 FFFFFF FF0000}
+${voffset 4}${font PizzaDude Bullets:size=10}N${font}   Upload: ${alignr}${totalup wlan0}
+${voffset 4}${font PizzaDude Bullets:size=10}T${font}   Download: ${alignr}${totaldown wlan0}
+${voffset 4}${font PizzaDude Bullets:size=10}Z${font}   Signal: ${wireless_link_qual wlan0}% ${alignr}${color red}${wireless_link_bar 8,120 wlan0}$color
+${voffset 4}${font PizzaDude Bullets:size=10}a${font}   Local Ip: ${alignr}${addr wlan0}
+${endif}${if_up wlan1}
+${color white}NETWORK wlan1 ${hr 2}$color
+${voffset 4}${font PizzaDude Bullets:size=10}O${font}   Up: ${upspeed wlan1}kb/s ${alignr}${upspeedgraph wlan1 8,120 FFFFFF 00FF00}
+${voffset 4}${font PizzaDude Bullets:size=10}U${font}   Down: ${downspeed wlan1}kb/s ${alignr}${downspeedgraph wlan1 8,120 FFFFFF FF0000}
+${voffset 4}${font PizzaDude Bullets:size=10}N${font}   Upload: ${alignr}${totalup wlan1}
+${voffset 4}${font PizzaDude Bullets:size=10}T${font}   Download: ${alignr}${totaldown wlan1}
+${voffset 4}${font PizzaDude Bullets:size=10}Z${font}   Signal: ${wireless_link_qual wlan1}% ${alignr}${color red}${wireless_link_bar 8,120 wlan1}$color
+${voffset 4}${font PizzaDude Bullets:size=10}a${font}   Local Ip: ${alignr}${addr wlan1}
+${endif}${if_up eth0}
+${color white}NETWORK eth0 ${hr 2}$color
+${voffset 4}${font PizzaDude Bullets:size=10}O${font}   Up: ${upspeed eth0}kb/s ${alignr}${upspeedgraph eth0 20,150 BEBEBE BEBEBE}
+${voffset 4}${font PizzaDude Bullets:size=10}U${font}   Down: ${downspeed eth0}kb/s ${alignr}${downspeedgraph eth0 20,150 BEBEBE BEBEBE}
+${voffset 4}${font PizzaDude Bullets:size=10}N${font}   Upload: ${alignr}${totalup eth0}
+${voffset 4}${font PizzaDude Bullets:size=10}T${font}   Download: ${alignr}${totaldown eth0}
+${voffset 4}${font PizzaDude Bullets:size=10}a${font}   Local Ip: ${alignr}${addr eth0}
+${endif}
+
+${voffset -20}${color white}PROCESSES ${hr 2}$color
+NAME $alignr PID    CPU
+${top name 1} $alignr ${top pid 1} ${top cpu 1}
+${top name 2} $alignr ${top pid 2} ${top cpu 2}
+${top name 3} $alignr ${top pid 3} ${top cpu 3}
+${top name 4} $alignr ${top pid 4} ${top cpu 4}
+${top name 5} $alignr ${top pid 5} ${top cpu 5}
+
+#${voffset -6}${color white}MESSAGES ${hr 2}$color
+#${execi 8 dmesg | tail | cut -c28-200}
