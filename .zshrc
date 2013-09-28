@@ -48,6 +48,7 @@ export EDITOR=/usr/bin/vim
 # e.g. ls /usr/local -> ls /usr/ -> ls /
 #export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 export WORDCHARS='*?-[]~=/&;!#$%^(){}<>'
+export WORDCHARS=${WORDCHARS//[\/]}
 
 # Show command return code when command exit.
 funtcion TRAPZERR() { echo "exit:$?" }
@@ -64,7 +65,7 @@ setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt hist_no_store
-function history-all() { history -E 1 }
+function histall() { history -E 1 }
 # incremental search
 #bindkey "^R" history-incremental-search-backward
 #bindkey "^S" history-incremental-search-forward
