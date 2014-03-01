@@ -99,8 +99,9 @@ bindkey -e	#emacs
 alias vi='vim'
 alias ls='ls -F --color'
 alias ll='ls -la'
-alias pd='popd'
+#alias pd='popd'
 alias less='less -R'
+alias ansifilter='sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"'
 export GREP_OPTIONS="--color=auto"
 
 # less(1) Colors
