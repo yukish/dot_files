@@ -4,7 +4,7 @@ KERNEL="`uname`"
 if [ "${KERNEL}" = "Linux" ]; then
 	export PATH="${PATH}"
 else
-	export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:$PATH:/usr/texbin"
+	export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:$PATH:/usr/texbin:$HOME/bin"
 	export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 fi
 
