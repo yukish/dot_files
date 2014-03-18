@@ -33,7 +33,8 @@ colorscheme torte
 "hi CursorLine cterm=NONE ctermbg=18 ctermfg=15 guibg=darkblue guifg=white
 highlight normal ctermbg=none
 highlight CursorLine cterm=underline ctermfg=none ctermbg=none
-highlight LineNr term=NONE cterm=NONE ctermfg=0 ctermbg=7
+highlight CursorColumn cterm=none ctermfg=none ctermbg=235
+highlight LineNr term=none cterm=none ctermfg=0 ctermbg=7
 highlight StatusLine ctermfg=26 ctermbg=15
 
 "set statusline=%<%F%h%m%r%=%b\ 0x%B\ \ %l\/%L,%c%V\ %P
@@ -52,11 +53,11 @@ highlight NonText ctermfg=238
 "highlight TabLineSel ctermfg=gray
 
 if has("autocmd")
-	filetype plugin indent on
-	autocmd BufReadPost *
-		\ if line("'\"") > 0 && line("'\"") <= line("$") |
-		\	exe "normal g`\"" |
-		\ endif
+    filetype plugin indent on
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 endif
 
 "" ##################################################
@@ -79,6 +80,7 @@ Bundle 'gmarik/vundle'
 " Keep bundle commands between here and filetype plugin indent on.
 " scripts on GitHub repos
 Bundle 'jiangmiao/auto-pairs'
+Bundle 'godlygeek/tabular'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'tpope/vim-rails.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
