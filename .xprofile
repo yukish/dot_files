@@ -14,11 +14,11 @@ fi
 #export GTK_IM_MODULE_FILE=/usr/lib/gtk-3.0/3.0.0/immodules.cache
 
 ### fcitx ###
-export GTK_IM_MODULE=xim
+#export GTK_IM_MODULE=xim
 #export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export QT4_IM_MODULE="fcitx"
-export XMODIFIERS="@im=fcitx"
+#export QT_IM_MODULE=fcitx
+#export QT4_IM_MODULE="fcitx"
+#export XMODIFIERS="@im=fcitx"
 
 ### ibus ###
 #export XIM="ibus"
@@ -48,3 +48,4 @@ export XMODIFIERS="@im=fcitx"
 #uim-xim &
 #export XMODIFIERS="@im=uim"
 
+dbus-launch openbox-session
