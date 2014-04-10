@@ -19,7 +19,7 @@ zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%f'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{red}:%f%F{yellow}%r%f'
 zstyle ':vcs_info:*' enable git svn
-zstyle ':completion:*:commands' rehash 1
+precmd() { vcs_info }
 
 # Set the PS1(PROMPT)
 #PS1="%F{10}(%B%f%F{6}${KERNEL}%f%b%F{10})%f:%(!.%B%F{red}.%F{3})%n%b%f:%F{green}%l%f@%F{11}%m %F{cyan}[%F{15}%K{17}%/%b%F{cyan}]%f
@@ -122,6 +122,7 @@ zstyle ':completion:*:default' cache-path ~/.zsh/cache
 zstyle ':completion:*::::' completer _expand _complete _match _approximate
 zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+zstyle ':completion:*:commands' rehash 1
 
 eval `dircolors ~/.zsh/DIR_COLORS`
 
