@@ -111,7 +111,7 @@ zstyle ':completion:*:default' cache-path ~/.cache/zsh
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*::::' completer _expand _complete _match _approximate
 zstyle ':completion:*' menu select=1 _complete _ignored _approximate
-zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+zstyle ':completion:*:*:-subscript-:*' indexes parameters
 zstyle ':completion:*:commands' rehash 1
 
 # Set the PS1(PROMPT)
