@@ -6,14 +6,26 @@ set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,sjis,iso-2022-jp
 set fileformats=unix,dos,mac
 
+set ttyfast
+
 set smartindent
 set autoindent
 set nocompatible
 
 set shiftwidth=4
 set tabstop=4
-set softtabstop=4
+set softtabstop=0
 set expandtab
+set smarttab
+
+" 
+" File type specific settings
+"
+au FileType xhtml,html,htm,php,xml setlocal tabstop=4
+au FileType xhtml,html,htm,php,xml setlocal shiftwidth=4
+au FileType xhtml,html,htm,php,xml setlocal softtabstop=4
+
+au FileType txt setlocal fo+=tn
 
 "set paste
 set ruler

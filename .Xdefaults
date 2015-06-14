@@ -1,46 +1,273 @@
-Xft.dpi:				96
-Xft.antialias:			true
-Xft.rgba:				rgba
-Xft.hinting:			true
-Xft.hintstyle:			hintslight
+xft.dpi:                96
+!xft.dpi:                102
+Xft.antialias:          true
+Xft.rgba:               rgba
+Xft.autohint:           0
+Xft.lcdfilter:          lcddefault
+Xft.hinting:            1
+Xft.hintstyle:          hintfull
+Xft.font:               Monaco:size=9
 
-!Xcursor.theme:			Vanilla-DMZ-AA
+! xterm settings
+XTerm*termName:         xterm-256color
+XTerm*locale:           true
+XTerm*metaSendsEscape:  true
+XTerm*utf8:             2
+!XTerm*faceName:         Monaco:style=Regular-Mono:size=9
+XTerm*faceName:         DejaVu Sans Mono:style=Regular:size=9
+!XTerm*faceName:         Libertain Mono for Powerline
+XTerm*faceNameDoublesize:   xft:Hiragino Sans GB:size=9
+!XTerm*faceNameDoublesize:   xft:IPAGothic:size=9
+!XTerm*letterSpace:      1
+XTerm*scaleHeight:      1
+!XTerm*faceSize:         10 
+!XTerm*font:             fixed
+XTerm*boldFont:         xft:DejaVu Sans Mono:style=Bold:size=9
+XTerm*allowBoldFonts:   true
+XTerm*eightBitInput:    true
+!XTerm*boldMode:         on 
+XTerm*loginShell:       true
+XTerm*dynamicColors:    true
 
-URxvt*depth:			32
-urxvt.background:		[80]#000000
-urxvt.foreground:		[95]#f2f2f2
-URxvt.bitdepth:			32
-URxvt*shading:			90
-URxvt.inheritPixmap:	true
+XTerm*geometry:         100x50
+XTerm.scrollBar:        false 
+XTerm*saveLines:        1000 
+!XTerm*Foreground:       #ffffff 
+!XTerm*Background:       #000000 
+XTerm*Foreground:       rgb:ff/ff/ff
+XTerm*Background:       rgb:0f/0f/0f
+XTerm*Border:           #303430 
+XTerm*TitleBar:         on 
+XTerm*TextUnderIcon:    on 
+XTerm*AllowIconInput:   on 
+XTerm*AutoRaise:        on 
+XTerm*termtype:         vt100 
+XTerm*ttyModes:         intr ^c erase ^h susp ^@ dsusp ^@ kill ^u eof ^d 
+XTerm*jumpScroll:       true 
+XTerm*multiScroll:      true 
+xTerm*cutNewline:       false 
+XTerm*scrollTtyOutput:  false 
+XTerm*scrollkey:        true
+XTerm*cursorBlink:      false
+XTerm*selectToClipboard:    true
+!XTerm*colorBDMode:      true
+!XTerm*colorULMode:      true
+lations:   #override           \n\
+    Shift <Key> Delete: insert-selection(SELECT)    \n\
+    Shift Ctrl <Key> C: select-end(CLIPBOARD)       \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> N: spawn-new-terminal()        \n
+
+*VT100.Translations: #override \
+                    Shift <Key>Up:              scroll-back(1) \n\
+                    Shift <Key>Down:            scroll-forw(1) \n\
+                    ~Meta Shift Ctrl <Key>V:    insert-selection(CLIPBOARD) \n\
+                     Meta Shift Ctrl <Key>V:    insert-selection(PRIMARY) \n\
+                     Shift Ctrl <Key>C:            select-end(CLIPBOARD, CUT_BUFFER1) \n\
+                    ~Shift ~Ctrl ~Meta <Btn2Up>:insert-selection(PRIMARY, CUT_BUFFER0) \n\
+                     Shift ~Ctrl ~Meta <Btn2Up>:insert-selection(CLIPBOARD, CUT_BUFFER1)
+
+!==============================================================================
+! colors 
+!==============================================================================
+!            black   red     green   yellow  blue    magenta cyan    white
+! normal     0       1       2       3       4       5       6       7
+! bold       8       9       10      11      12      13      14      15
+!xterm*colorBD:     #e6d51d
+xterm*colorBD:     #ffffff
+!xterm*background:  #0c0c1c
+!xterm*foreground:  #eff8fb
+! black
+xterm*color0:      #000000
+xterm*color8:      #555753
+! red
+!xterm*color1:      #9e1828
+xterm*color1:      #ff0000
+xterm*color9:      #ff6565
+! green
+!xterm*color2:      #4c8d00
+xterm*color2:      green1
+!xterm*color10:     #6bbe1a
+xterm*color10:     SpringGreen3
+
+! yellow
+!xterm*color3:      #ff8040
+xterm*color3:      yellow2
+!xterm*color11:     #e6d51d
+xterm*color11:     LightGoldenrod1
+! blue
+!xterm*color4:      #204a87
+xterm*color4:      blue1
+!xterm*color12:     #9370bd
+xterm*color12:     DodgerBlue1
+
+! magenta
+!xterm*color5:      #963c59
+xterm*color5:      magenta
+!xterm*color13:     #d3649f
+xterm*color13:     violet
+
+! cyan
+!xterm*color6:      #105952
+xterm*color6:      cyan1
+!xterm*color14:     #177f75
+xterm*color14:     cyan2
+
+! white
+xterm*color7:      #dedede
+xterm*color15:     #ffffff
+
+!Xcursor.theme:         Vanilla-DMZ-AA
+
+! aterm settings
+aterm*termName:         xterm-256color
+aterm*locale:           true
+aterm*metaSendsEscape:  true
+aterm*utf8:             2
+aterm*faceName:         DejaVu Sans Mono:style=Regular:size=9
+aterm*faceNameDoublesize:   xft:Hiragino Sans GB:size=9
+!aterm*letterSpace:      1
+aterm*scaleHeight:      1
+!aterm*faceSize:         10 
+aterm*font:             *-misc-Hiragino Sans GB-medium-r-normal-0-0-0-0-p-0-iso8859-1
+aterm*boldFont:         DejaVu Sans Mono:style=Bold:size=9
+aterm*allowBoldFonts:   true
+aterm*eightBitInput:    true
+!aterm*boldMode:         on 
+aterm*loginShell:       true
+aterm*dynamicColors:    true
+
+aterm*geometry:         100x70
+aterm.scrollBar:        false 
+aterm*saveLines:        1000 
+!aterm*Foreground:       #ffffff 
+!aterm*Background:       #000000 
+aterm*Foreground:       rgb:ff/ff/ff
+aterm*Background:       rgb:0f/0f/0f
+aterm*Border:           #303430 
+aterm*TitleBar:         on 
+aterm*TextUnderIcon:    on 
+aterm*AllowIconInput:   on 
+aterm*AutoRaise:        on 
+aterm*termtype:         vt100 
+aterm*ttyModes:         intr ^c erase ^h susp ^@ dsusp ^@ kill ^u eof ^d 
+aterm*jumpScroll:       true 
+aterm*multiScroll:      true 
+xTerm*cutNewline:       false 
+aterm*scrollTtyOutput:  false 
+aterm*scrollkey:        true
+aterm*cursorBlink:      false
+aterm*selectToClipboard:    true
+!aterm*colorBDMode:      true
+!aterm*colorULMode:      true
+lations:   #override           \n\
+    Shift <Key> Delete: insert-selection(SELECT)    \n\
+    Shift Ctrl <Key> C: select-end(CLIPBOARD)       \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> N: spawn-new-terminal()        \n
+
+*VT100.Translations: #override \
+                    Shift <Key>Up:              scroll-back(1) \n\
+                    Shift <Key>Down:            scroll-forw(1) \n\
+                    ~Meta Shift Ctrl <Key>V:    insert-selection(CLIPBOARD) \n\
+                     Meta Shift Ctrl <Key>V:    insert-selection(PRIMARY) \n\
+                     Shift Ctrl <Key>C:            select-end(CLIPBOARD, CUT_BUFFER1) \n\
+                    ~Shift ~Ctrl ~Meta <Btn2Up>:insert-selection(PRIMARY, CUT_BUFFER0) \n\
+                     Shift ~Ctrl ~Meta <Btn2Up>:insert-selection(CLIPBOARD, CUT_BUFFER1)
+
+!==============================================================================
+! colors 
+!==============================================================================
+!            black   red     green   yellow  blue    magenta cyan    white
+! normal     0       1       2       3       4       5       6       7
+! bold       8       9       10      11      12      13      14      15
+!aterm*colorBD:     #e6d51d
+aterm*colorBD:     #ffffff
+!aterm*background:  #0c0c1c
+!aterm*foreground:  #eff8fb
+! black
+aterm*color0:      #000000
+aterm*color8:      #555753
+! red
+!aterm*color1:      #9e1828
+aterm*color1:      #ff0000
+aterm*color9:      #ff6565
+! green
+!aterm*color2:      #4c8d00
+aterm*color2:      green1
+!aterm*color10:     #6bbe1a
+aterm*color10:     SpringGreen3
+
+! yellow
+!aterm*color3:      #ff8040
+aterm*color3:      yellow2
+!aterm*color11:     #e6d51d
+aterm*color11:     LightGoldenrod1
+! blue
+!aterm*color4:      #204a87
+aterm*color4:      blue1
+!aterm*color12:     #9370bd
+aterm*color12:     DodgerBlue1
+
+! magenta
+!aterm*color5:      #963c59
+aterm*color5:      magenta
+!aterm*color13:     #d3649f
+aterm*color13:     violet
+
+! cyan
+!aterm*color6:      #105952
+aterm*color6:      cyan1
+!aterm*color14:     #177f75
+aterm*color14:     cyan2
+
+! white
+aterm*color7:      #dedede
+aterm*color15:     #ffffff
+
+!Xcursor.theme:         Vanilla-DMZ-AA
+
+!#############
+!### urxvt ###
+!#############
+URxvt*depth:            32
+URxvt.background:       [20]#000000
+!URxvt.foreground:       #f2f2f2
+URxvt.foreground:       [90]#f2f2f2
+URxvt.bitdepth:         32
+URxvt*shading:          20
+URxvt.inheritPixmap:    false
 ! transparency - true or false (default)
-URxvt*transparent:		true
+URxvt*transparent:      true
 
-!urxvt fonts: 
-URxvt*font:				xft:monaco:size=9,xft:Hiragino Kaku Gothic Pro:size=10
-URxvt*boldFont:			xft:monaco:bold:size=9
-URxvt.letterSpace:		-2
+!URxvt fonts:
+URxvt*font:             xft:Monaco:style=Regular-Mono:size=9, xft:IPAGothic:size=10
+URxvt*boldFont:         xft:Monaco:bold:size=9, xft:IPAGothic:bold:size=10
+!URxvt*italicFont:
+!URxvt*boldItalicFont:
+URxvt.letterSpace:      -2
 
-!urxvt extensions:
-URxvt.perl-ext-common:	default,matcher
+!URxvt extensions:
+URxvt.perl-ext-common:  default,matcher
 !enabling clickable links:
-URxvt.urlLauncher:		/usr/bin/google-chrome
-URxvt.matcher.button:	1
+URxvt.urlLauncher:      /usr/bin/google-chrome
+URxvt.matcher.button:   1
 !
-URxvt*geometry:			124x60
+!URxvt*geometry:         270x68
+URxvt*borderLess:       true
 
-URxvt*borderLess:		true
-
-!urxvt scrolling options and cursor style:
+!URxvt scrolling options and cursor style:
 !URxvt*saveLines: 12000
-URxvt*scrollstyle:		plain
+URxvt*scrollstyle:      plain
 ! scrollbar - true (default) or false
-URxvt*scrollBar:		false
+URxvt*scrollBar:        false
+URxvt*cursorBlink:      false
 
 ! Fullscreen
-urxvt*perl-ext-common:	fullscreen
-urxvt*keysym.F11:		perl:fullscreen:switch
+URxvt*perl-ext-common:  fullscreen
+URxvt*keysym.F11:       perl:fullscreen:switch
 
-!urxvt color scheme:
+!URxvt color scheme:
 URxvt*colorUL: #86a2b0
 
 ! black
@@ -68,13 +295,13 @@ URxvt*color14 : #34E2E2
 URxvt*color7  : #D3D7CF
 URxvt*color15 : #EEEEEC
 
+! URxvt tabs settings:
+URxvt.tabbed.tabbar-fg:     2
+URxvt.tabbed.tabbar-bg:     0
+URxvt.tabbed.tab-fg:        2
+URxvt.tabbed.tab-bg:        8
+URxvt.tabbed.autohide:      yes
+URxvt.tabbed.new-button:    no
+URxvt.tabbed.title:         no
 
-! urxvt tabs settings:
-URxvt.tabbed.tabbar-fg:		2
-URxvt.tabbed.tabbar-bg:		0
-URxvt.tabbed.tab-fg:		2
-URxvt.tabbed.tab-bg:		8
-URxvt.tabbed.autohide:		yes
-URxvt.tabbed.new-button:	no
-URxvt.tabbed.title:			no
-
+Xcursor.theme: oxy-neon

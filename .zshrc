@@ -2,10 +2,10 @@
 KERNEL="`uname`"
 
 if [ "${KERNEL}" = "Linux" ]; then
-	export PATH="${PATH}"
+    export PATH="${PATH}:${HOME}/bin"
 else
-	export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:$PATH:/usr/texbin:$HOME/bin"
-	export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:$PATH:/usr/texbin:$HOME/bin"
+    export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 fi
 
 autoload -U compinit && compinit
@@ -23,11 +23,11 @@ zstyle ':vcs_info:*' enable git svn
 
 # locale
 if [ `id -u` -eq 0 ]; then
-#	export LANG=C
-	export LANG=en_US.UTF-8
+#   export LANG=C
+    export LANG=en_US.UTF-8
 else
-#	export LANG=ja_JP.UTF-8
-	export LANG=en_US.UTF-8
+#   export LANG=ja_JP.UTF-8
+    export LANG=en_US.UTF-8
 fi
 
 export EDITOR=/usr/bin/vim
@@ -80,8 +80,8 @@ setopt BRACE_CCL
 
 # key bind
 #set -o emacs
-bindkey -e	#emacs
-#bindkey -v	#vi
+bindkey -e  #emacs
+#bindkey -v #vi
 
 # alias
 alias vi='vim'
@@ -90,7 +90,9 @@ alias ll='ls -la'
 #alias pd='popd'
 alias less='less -R'
 alias ansifilter='sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"'
-export GREP_OPTIONS="--color=auto"
+alias grep='grep --color=always'
+alias datef='date +%F'
+#export GREP_OPTIONS="--color=auto"
 
 # less(1) Colors
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -127,10 +129,16 @@ export PROMPT PS1 PS2
 
 eval `dircolors ~/.zsh/DIR_COLORS`
 
-export TERM="screen-256color"
-# screen
+#export TERM="screen-256color"
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
+
+# screen (tmux)
 if [[ -z ${SSH_CLIENT} && -z ${SSH_TTY} && ! -z ${DISPLAY} && \
   ( -x /usr/local/bin/tmux || -x /usr/bin/tmux ) && ! ${USER} == "root" ]]; then
-#	[[ `ps -ef | grep -v grep | grep tmux | wc -l` = 0 ]] && tmux
-	[[ $TMUX == "" ]] && tmux
+#   [[ `ps -ef | grep -v grep | grep tmux | wc -l` = 0 ]] && tmux
+    [[ $TMUX == "" ]] && tmux -u
 fi

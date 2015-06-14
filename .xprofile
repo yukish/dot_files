@@ -48,4 +48,8 @@ fi
 #uim-xim &
 #export XMODIFIERS="@im=uim"
 
+OOO_FORCE_DESKTOP="gnome"
+
+XDG_CONFIG_HOME="${HOME}/.config"
+
 dbus-launch openbox-session
